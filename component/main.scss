@@ -2,7 +2,7 @@
 @import './viewers/styles/viewers.scss';
 @import './broadcast/styles/broadcast.scss';
 
-html, body {
+html, body, #content {
   height: 100%;
   margin: 0;
 }
