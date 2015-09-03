@@ -1,9 +1,26 @@
 import React from 'react';
+import ChatBox from './chat/chatBox.jsx';
+import api from '../server/stubApi';
 
-class HelloMessage extends React.Component {
+class YelloApp extends React.Component {
+  componentWillMount() {
+    this.setState({
+      chat: api.getChat(),
+      broadcasters: api.getBroadcasters(),
+      viewers: api.getViewers()
+    });
+  }
+
   render() {
-    return <div>Hello {this.props.name}</div>;
+    return (
+      <div>
+        <ChatBox chat={this.state.chat} />
+      </div>
+    )
   }
 }
 
-React.render(<HelloMessage name="Sebastian" />, document.getElementById('content'));
+React.render(
+  <YelloApp />,
+  document.getElementById('content')
+);
