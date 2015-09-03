@@ -11,7 +11,10 @@ module.exports = {
     id: 2
   }],
   broadcasters: [],
-  viewers: [],
+  viewers: [{
+    user: 'James',
+    id: 1
+  }],
 
   getChat: function() {
     return this.chat;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ChatBox from './chat/chatBox.jsx';
+import ViewerBox from './viewers/viewerBox.jsx';
 import api from '../server/stubApi';
 
 class YelloApp extends React.Component {
@@ -18,7 +19,8 @@ class YelloApp extends React.Component {
 
   render() {
     return (
-      <div className="chatbox">
+      <div className="container">
+        <ViewerBox viewers={this.state.viewers} open={this.state.open.viewers} />
         <ChatBox chat={this.state.chat} open={this.state.open.chat} />
       </div>
     )
