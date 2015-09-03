@@ -1,3 +1,6 @@
+@import './chat/chatbox.scss';
+
 .flex-container {
   display: flex;
+  flex-flow: row wrap;
 }
