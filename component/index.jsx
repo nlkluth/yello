@@ -13,8 +13,8 @@ class YelloApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <ChatBox chat={this.state.chat} />
+      <div className="chatbox">
+        <ChatBox chat={this.state.chat} open={this.state.open.chat} />
       </div>
     )
   }

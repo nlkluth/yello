@@ -1,6 +1,12 @@
-@import './chat/chatbox.scss';
+@import './chat/styles/chatbox.scss';
 
-.flex-container {
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
   display: flex;
   flex-flow: row wrap;
 }
