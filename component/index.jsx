@@ -7,7 +7,12 @@ class YelloApp extends React.Component {
     this.setState({
       chat: api.getChat(),
       broadcasters: api.getBroadcasters(),
-      viewers: api.getViewers()
+      viewers: api.getViewers(),
+      open: {
+        chat: true,
+        broadcasters: true,
+        viewers: true
+      }
     });
   }
 
