@@ -1,9 +1,18 @@
+'use strict';
+
 import React from 'react';
 import ChatBox from './chat/chatBox.jsx';
 import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
 import api from '../../server/stubApi';
+import {Provider, connect} from 'react-redux';
+import store from '../stores';
 
+@connect(state => {
+  return {
+    chat: state.chat
+  }
+})
 class YelloApp extends React.Component {
   constructor(props) {
     super(props);
@@ -21,17 +30,21 @@ class YelloApp extends React.Component {
   }
 
   render() {
+    const { dispatch, chat } = this.props;
+
     return (
       <div className="container-nowrap">
         <ViewerBox viewers={this.state.viewers} open={this.state.open.viewers} />
         <BroadcastBox broadcasters={this.state.broadcasters} open={this.state.open.broadcasters} />
-        <ChatBox chat={this.state.chat} open={this.state.open.chat} />
+        <ChatBox chat={chat} open={this.state.open.chat} />
       </div>
     )
   }
 }
 
 React.render(
-  <YelloApp />,
+  <Provider store={store}>
+    {() => <YelloApp />}
+  </Provider>,
   document.getElementById('content')
 );

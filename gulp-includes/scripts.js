@@ -11,7 +11,9 @@ module.exports = function(gulp) {
   gulp.task('scripts:dev', function() {
     var props = {
       debug : true,
-      transform:  [babelify, reactify]
+      transform:  [babelify.configure({
+        optional: ['es7.decorators']
+      }), reactify]
     };
 
     var bundler = watchify(browserify('./src/component/index.jsx', props));
