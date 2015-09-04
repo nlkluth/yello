@@ -9,6 +9,12 @@ html, body, #content {
   flex-flow: row wrap;
 }
 
+.container-nowrap {
+  min-height: 100%;
+  display: flex;
+  flex-flow: row no-wrap;
+}
+
 .container-vertical {
   display: flex;
   flex-flow: column wrap;

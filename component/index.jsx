@@ -22,7 +22,7 @@ class YelloApp extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-nowrap">
         <ViewerBox viewers={this.state.viewers} open={this.state.open.viewers} />
         <BroadcastBox broadcasters={this.state.broadcasters} open={this.state.open.broadcasters} />
         <ChatBox chat={this.state.chat} open={this.state.open.chat} />
