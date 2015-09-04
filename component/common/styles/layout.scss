@@ -1,0 +1,33 @@
+html, body, #content {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.container-vertical {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.primary {
+  background: $main;
+  color: $white;
+}
+
+.button {
+  border: none;
+}
+
+textarea:focus {
+  outline: #AEE5D8 auto 5px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}

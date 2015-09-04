@@ -1,14 +1,5 @@
+@import './common/styles/variables.scss';
+@import './common/styles/layout.scss';
 @import './chat/styles/chat.scss';
 @import './viewers/styles/viewers.scss';
 @import './broadcast/styles/broadcast.scss';
-
-html, body, #content {
-  height: 100%;
-  margin: 0;
-}
-
-.container {
-  min-height: 100%;
-  display: flex;
-  flex-flow: row wrap;
-}
