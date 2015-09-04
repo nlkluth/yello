@@ -14,7 +14,7 @@ module.exports = function(gulp) {
       transform:  [babelify, reactify]
     };
 
-    var bundler = watchify(browserify('./component/index.jsx', props));
+    var bundler = watchify(browserify('./src/component/index.jsx', props));
 
     function rebundle() {
       return bundler.bundle()

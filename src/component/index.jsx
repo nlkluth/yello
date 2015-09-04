@@ -2,7 +2,7 @@ import React from 'react';
 import ChatBox from './chat/chatBox.jsx';
 import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
-import api from '../server/stubApi';
+import api from '../../server/stubApi';
 
 class YelloApp extends React.Component {
   constructor(props) {
