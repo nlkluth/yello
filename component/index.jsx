@@ -5,8 +5,10 @@ import BroadcastBox from './broadcast/broadcastBox.jsx';
 import api from '../server/stubApi';
 
 class YelloApp extends React.Component {
-  componentWillMount() {
-    this.setState({
+  constructor(props) {
+    super(props);
+
+    this.state = {
       chat: api.getChat(),
       broadcasters: api.getBroadcasters(),
       viewers: api.getViewers(),
@@ -15,7 +17,7 @@ class YelloApp extends React.Component {
         broadcasters: true,
         viewers: true
       }
-    });
+    };
   }
 
   render() {
