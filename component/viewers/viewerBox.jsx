@@ -4,11 +4,7 @@ import ViewerList from './viewerList.jsx';
 export default class ViewerBox extends React.Component {
   render() {
     return (
-      <ul className="viewerbox">
-        {this.props.viewers.map(result =>
-          <ViewerList key={result.id} data={result}/>
-        )}
-      </ul>
+      <ViewerList viewers={this.props.viewers} />
     )
   }
 }

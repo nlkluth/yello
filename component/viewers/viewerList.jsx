@@ -1,13 +1,16 @@
 import React from 'react';
-import Avatar from '../common/avatar.jsx';
+import Viewer from './viewer.jsx';
 
 export default class ViewerList extends React.Component {
   render() {
+    let viewers = this.props.viewers.map(result =>
+      <Viewer key={result.id} user={result.user} />
+    )
+
     return (
-      <li>
-        <Avatar />
-        {this.props.data.user}
-      </li>
+      <ul className="viewerbox">
+        {viewers}
+      </ul>
     )
   }
 }
