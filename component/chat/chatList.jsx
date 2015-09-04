@@ -3,13 +3,11 @@ import Chat from './chat.jsx';
 
 export default class ChatList extends React.Component {
   render() {
-    let chatList = this.props.chat.map(function(result) {
-      return (
-        <Chat key={result.id} user={result.user}>
-          {result.text}
-        </Chat>
-      );
-    });
+    let chatList = this.props.chat.map(result =>
+      <Chat key={result.id} user={result.user}>
+        {result.text}
+      </Chat>
+    );
 
     return (
       <ul className="chatlist">
