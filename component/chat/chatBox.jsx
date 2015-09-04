@@ -6,11 +6,7 @@ export default class ChatBox extends React.Component {
   render() {
     return (
       <div className="chatbox container-vertical">
-        <ul className="chatlist">
-          {this.props.chat.map(function(result) {
-             return <ChatList key={result.id} data={result} />;
-          })}
-        </ul>
+        <ChatList chat={this.props.chat} />
         <ChatForm />
       </div>
     )

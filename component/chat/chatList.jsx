@@ -1,9 +1,20 @@
 import React from 'react';
+import Chat from './chat.jsx';
 
 export default class ChatList extends React.Component {
   render() {
+    let chatList = this.props.chat.map(function(result) {
+      return (
+        <Chat key={result.id} user={result.user}>
+          {result.text}
+        </Chat>
+      );
+    });
+
     return (
-      <li>{this.props.data.user}: {this.props.data.text}</li>
+      <ul className="chatlist">
+        {chatList}
+      </ul>
     )
   }
 }

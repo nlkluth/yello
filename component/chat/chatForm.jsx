@@ -1,5 +1,4 @@
 import React from 'react';
-import ChatList from './chatList.jsx';
 
 export default class ChatForm extends React.Component {
   render() {
