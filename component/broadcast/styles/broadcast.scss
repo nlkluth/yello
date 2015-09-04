@@ -1,12 +1,14 @@
 .broadcastbox {
   flex-grow: 10;
-  padding: 10px;
 }
 
 .broadcastView {
   flex-grow: 4;
+  padding: 10px;
 }
 
 .broadcastControls {
   flex-grow: 1;
+  padding: 10px;
+  background: $lightMain;
 }
