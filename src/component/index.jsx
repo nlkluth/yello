@@ -4,13 +4,13 @@ import React from 'react';
 import ChatBox from './chat/chatBox.jsx';
 import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
-import api from '../../server/stubApi';
 import {Provider, connect} from 'react-redux';
 import store from '../stores';
 
 @connect(state => {
   return {
-    chat: state.chat
+    chat: state.chat,
+    viewers: state.viewers
   }
 })
 class YelloApp extends React.Component {
@@ -18,9 +18,6 @@ class YelloApp extends React.Component {
     super(props);
 
     this.state = {
-      chat: api.getChat(),
-      broadcasters: api.getBroadcasters(),
-      viewers: api.getViewers(),
       open: {
         chat: true,
         broadcasters: true,
@@ -30,11 +27,11 @@ class YelloApp extends React.Component {
   }
 
   render() {
-    const { dispatch, chat } = this.props;
+    const { dispatch, chat, viewers, broadcasters } = this.props;
 
     return (
       <div className="container-nowrap">
-        <ViewerBox viewers={this.state.viewers} open={this.state.open.viewers} />
+        <ViewerBox viewers={viewers} open={this.state.open.viewers} />
         <BroadcastBox broadcasters={this.state.broadcasters} open={this.state.open.broadcasters} />
         <ChatBox chat={chat} open={this.state.open.chat} />
       </div>
