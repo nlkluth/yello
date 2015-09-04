@@ -29,6 +29,9 @@ export default class BroadcastView extends React.Component {
     navigator.getUserMedia(constraints, stream => {
       let video = React.findDOMNode(this.refs.hostScreen);
       video.src = window.URL.createObjectURL(stream);
+      video.onloadedmetadata = () => {
+        video.play();
+      };
     }, e => console.log(e));
   }
 }
