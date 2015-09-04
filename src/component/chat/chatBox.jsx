@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import ChatList from './chatList.jsx';
 import ChatForm from './chatForm.jsx';

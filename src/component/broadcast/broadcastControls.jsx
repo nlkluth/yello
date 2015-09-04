@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import BroadcastList from './controls/broadcastList.jsx';
 import BroadcastOptions from './controls/broadcastOptions.jsx';
