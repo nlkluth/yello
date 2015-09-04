@@ -5,6 +5,13 @@
 .broadcastView {
   flex-grow: 4;
   padding: 10px;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  video {
+    width: 25%;
+    margin: 3px;
+  }
 }
 
 .broadcastControls {
