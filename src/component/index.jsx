@@ -10,7 +10,8 @@ import store from '../stores';
 @connect(state => {
   return {
     chat: state.chat,
-    viewers: state.viewers
+    viewers: state.viewers,
+    broadcasters: state.broadcasters
   }
 })
 class YelloApp extends React.Component {
@@ -32,7 +33,7 @@ class YelloApp extends React.Component {
     return (
       <div className="container-nowrap">
         <ViewerBox viewers={viewers} open={this.state.open.viewers} />
-        <BroadcastBox broadcasters={this.state.broadcasters} open={this.state.open.broadcasters} />
+        <BroadcastBox broadcasters={broadcasters} open={this.state.open.broadcasters} />
         <ChatBox chat={chat} open={this.state.open.chat} />
       </div>
     )

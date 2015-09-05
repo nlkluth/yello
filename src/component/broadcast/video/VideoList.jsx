@@ -3,17 +3,19 @@
 import React from 'react';
 
 export default class VideoList extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
-
-    let video = React.findDOMNode(this);
-    video.src = window.URL.createObjectURL(props.stream);
-    video.onloadedmetadata = () => video.play();
+    this.src = 'http://youtube.com/';//window.URL.createObjectURL(props.stream);
   }
 
   render() {
     return (
-      <video></video>
+      <video src={this.src}></video>
     )
+  }
+
+  componentDidMount() {
+    let video = React.findDOMNode(this);
+    video.onloadedmetadata = () => video.play();
   }
 }

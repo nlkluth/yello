@@ -2,12 +2,23 @@
 
 import React from 'react';
 import VideoList from './video/videoList.jsx';
+import { broadcasters } from '../../actions'
 
 export default class BroadcastView extends React.Component {
-  constructor(props) {
-    super(props);
+  render() {
+    let videoList = this.props.broadcasters.map(stream =>
+      <VideoList key={stream.id} stream={stream} />
+    );
 
-    this.videos = [];
+    return (
+      <div className="broadcastView container">
+        {videoList}
+      </div>
+    )
+  }
+
+  componentDidMount() {
+    let videos = [];
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
@@ -26,7 +37,7 @@ export default class BroadcastView extends React.Component {
       };
 
       navigator.getUserMedia(constraints, stream => {
-        this.videos.push(stream);
+        dispatch(broadcasters.newUser(stream));
       }, e => console.log(e));
     };
 
@@ -46,17 +57,5 @@ export default class BroadcastView extends React.Component {
 
       sourceSelected(audioSource, videoSource);
     });
-  }
-
-  render() {
-    let videoList = this.videos.map(stream =>
-      <VideoList key={stream.id} stream={stream} />
-    );
-
-    return (
-      <div className="broadcastView container">
-        {videoList}
-      </div>
-    )
   }
 }

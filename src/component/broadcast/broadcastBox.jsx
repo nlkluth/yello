@@ -8,7 +8,7 @@ export default class BroadcastBox extends React.Component {
   render() {
     return (
       <div className="broadcastbox container-vertical">
-        <BroadcastView />
+        <BroadcastView broadcasters={this.props.broadcasters} />
         <BroadcastControls />
       </div>
     )
