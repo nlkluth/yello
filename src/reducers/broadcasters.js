@@ -5,7 +5,10 @@ import {
   FETCH_VIDEO_SUCCESS, INVALIDATE_VIDEO
 } from '../actions/constants';
 
-const intialState = getUserMedia();
+const intialState = {
+  fetching: false,
+  broadcasters: []
+};
 
 export default (state = intialState, action) => {
   switch(action.type) {

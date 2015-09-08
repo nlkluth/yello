@@ -6,7 +6,7 @@ import { broadcasters } from '../../actions'
 
 export default class BroadcastView extends React.Component {
   render() {
-    let videoList = this.props.broadcasters.map(stream =>
+    let videoList = this.props.broadcasters.broadcasters.map(stream =>
       <VideoList key={stream.id} stream={stream} />
     );
 
