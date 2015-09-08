@@ -1,7 +1,11 @@
 'use strict';
 
-import { NEW_USER } from '../actions/constants';
-const intialState = [{id: 1, user: 'jen'}, {id: 2, user: 'brian'}];
+import {
+  NEW_USER, FETCH_VIDEO_INPUTS, FETCH_VIDEO_FAILURE,
+  FETCH_VIDEO_SUCCESS, INVALIDATE_VIDEO
+} from '../actions/constants';
+
+const intialState = getUserMedia();
 
 export default (state = intialState, action) => {
   switch(action.type) {
@@ -10,4 +14,4 @@ export default (state = intialState, action) => {
     default:
       return state;
   }
-}
+};
