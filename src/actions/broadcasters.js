@@ -35,6 +35,7 @@ export let fetchVideo = (video) =>
   (dispatch) => {
     dispatch(getVideo(video));
 
-    return getUserMedia().then(response => dispatch(receiveVideo(response)))
+    return getUserMedia()
+      .then(response => dispatch(receiveVideo(response)))
       .catch(error => dispatch(receiveFailure(error)));
   };
