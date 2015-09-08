@@ -1,48 +1,26 @@
 'use strict';
 
 import React from 'react';
+import {Provider} from 'react-redux';
+import Router, {Route, DefaultRoute} from 'react-router';
+import YelloApp from './yello.jsx';
 import ChatBox from './chat/chatBox.jsx';
 import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
-import {Provider, connect} from 'react-redux';
 import store from '../stores';
 
-@connect(state => {
-  return {
-    chat: state.chat,
-    viewers: state.viewers,
-    broadcasters: state.broadcasters
-  }
-})
-class YelloApp extends React.Component {
-  constructor(props) {
-    super(props);
+let routes = (
+  <Route name="Home" handler={YelloApp} path="/">
+    <Route name="Viewers" handler={ViewerBox} />
+    <Route name="Chat" handler={ChatBox} />
+    <DefaultRoute handler={BroadcastBox} />
+  </Route>
+);
 
-    this.state = {
-      open: {
-        chat: true,
-        broadcasters: true,
-        viewers: true
-      }
-    };
-  }
-
-  render() {
-    const { dispatch, chat, viewers, broadcasters } = this.props;
-
-    return (
-      <div className="container-nowrap">
-        <ViewerBox viewers={viewers} open={this.state.open.viewers} />
-        <BroadcastBox broadcasters={broadcasters} open={this.state.open.broadcasters} />
-        <ChatBox chat={chat} open={this.state.open.chat} />
-      </div>
-    )
-  }
-}
-
-React.render(
+Router.run(routes, (Handler, routerState) =>
+  React.render(
   <Provider store={store}>
-    {() => <YelloApp />}
+    {() => <Handler routerSate={routerState} />}
   </Provider>,
   document.getElementById('content')
-);
+));

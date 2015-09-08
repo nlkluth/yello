@@ -1,0 +1,9 @@
+.navbox {
+  display: flex;
+  flex-flow: row nowrap;
+
+  a {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
