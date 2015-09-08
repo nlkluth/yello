@@ -14,7 +14,7 @@ import NavBox from './common/navBox.jsx';
 export default class YelloApp extends React.Component {
   render() {
     return (
-      <div className="container-nowrap">
+      <div className="container-vertical-nowrap">
         <RouteHandler {...this.props}/>
         <NavBox />
       </div>

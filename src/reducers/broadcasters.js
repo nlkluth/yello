@@ -6,7 +6,7 @@ import {
 } from '../actions/constants';
 
 const intialState = {
-  fetching: false,
+  fetching: true,
   broadcasters: []
 };
 
