@@ -12,7 +12,8 @@ module.exports = function(gulp) {
     var props = {
       debug : true,
       transform:  [babelify.configure({
-        optional: ['es7.decorators']
+        optional: ['es7.decorators'],
+        plugins: ['object-assign']
       }), reactify]
     };
 
