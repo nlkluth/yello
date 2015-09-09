@@ -17,25 +17,35 @@ export default () => {
       }
     };
 
-    navigator.getUserMedia(constraints, stream => {
-      dispatch(broadcasters.newUser(stream));
-    }, e => console.log(e));
+    return new Promise((resolve, reject) => {
+      navigator.getUserMedia(constraints, stream => {
+        resolve(stream);
+      }, e => reject(e));
+    });
   };
 
-  MediaStreamTrack.getSources(sourceInfos => {
-    var audioSource = null;
-    var videoSource = null;
+  let getMedia = new Promise((resolve, reject) => {
+    MediaStreamTrack.getSources(sourceInfos => {
+      var audioSource = null;
+      var videoSource = null;
 
-    sourceInfos.forEach(info => {
-      if (info.kind === 'audio') {
-        audioSource = info.id;
-      }
+      sourceInfos.forEach(info => {
+        if (info.kind === 'audio') {
+          audioSource = info.id;
+        }
 
-      if (info.kind === 'video') {
-        videoSource = info.id;
-      }
-    })
+        if (info.kind === 'video') {
+          videoSource = info.id;
+        }
 
-    sourceSelected(audioSource, videoSource);
+        videos.push(sourceSelected(audioSource, videoSource));
+      });
+
+      Promise.all(videos)
+        .then(() => resolve(videos))
+        .catch(() => reject(videos));
+    });
   });
+
+  return getMedia;
 };
