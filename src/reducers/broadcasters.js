@@ -6,15 +6,31 @@ import {
 } from '../actions/constants';
 
 const intialState = {
-  fetching: true,
+  fetching: false,
   broadcasters: []
 };
 
 export default (state = intialState, action) => {
+  let result;
+
   switch(action.type) {
     case NEW_USER:
-      return state;
+      result = state;
+    case FETCH_VIDEO_INPUTS:
+      result = Object.assign({}, state, {
+        fetching: true
+      });
+    case FETCH_VIDEO_SUCCESS:
+      result = Object.assign({}, state, {
+        fetching: false
+      });
+    case FETCH_VIDEO_FAILURE:
+      result = Object.assign({}, state, {
+        fetching: false
+      });
     default:
-      return state;
+      result = state;
+
+    return result;
   }
 };
