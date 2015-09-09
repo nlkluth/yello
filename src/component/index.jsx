@@ -20,6 +20,6 @@ let routes = (
 Router.run(routes, (Handler, routerState) =>
   React.render(
     <Provider store={store}>
-      {() => <Handler routerSate={routerState} />}
+      {() => <Handler routerState={routerState} />}
     </Provider>,
     document.getElementById('content')));
