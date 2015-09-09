@@ -24,7 +24,7 @@ export default () => {
     });
   };
 
-  let getMedia = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     MediaStreamTrack.getSources(sourceInfos => {
       var audioSource = null;
       var videoSource = null;
@@ -42,10 +42,8 @@ export default () => {
       });
 
       Promise.all(videos)
-        .then(() => resolve(videos))
-        .catch(() => reject(videos));
+        .then(result => resolve(result))
+        .catch(error => reject(error));
     });
   });
-
-  return getMedia;
 };
