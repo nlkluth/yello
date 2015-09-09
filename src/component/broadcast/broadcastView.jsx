@@ -7,7 +7,7 @@ import { broadcasters } from '../../actions'
 
 export default class BroadcastView extends React.Component {
   componentDidMount() {
-    this.props.dispatch(broadcasters.fetchVideo());
+    this.props.dispatch(broadcasters.fetchVideo({user: null}));
   }
 
   render() {
