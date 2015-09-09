@@ -5,7 +5,7 @@ import React from 'react';
 export default class VideoList extends React.Component {
   constructor(props) {
     super(props);
-    this.src = 'http://youtube.com/';//window.URL.createObjectURL(props.stream);
+    this.src = window.URL.createObjectURL(props.stream);
   }
 
   render() {
