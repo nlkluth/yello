@@ -19,11 +19,11 @@ export default class BroadcastView extends React.Component {
     );
 
     if (list.fetching) {
-      videoList = <Loading />
+      setTimeout(() => videoList = <Loading />, 500);
     }
 
     return (
-      <div className="broadcastView container">
+      <div className="broadcastView container-nowrap">
         {videoList}
       </div>
     )
