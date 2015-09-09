@@ -6,33 +6,33 @@ import {
   FETCH_VIDEO_SUCCESS, INVALIDATE_VIDEO
 } from './constants';
 
-export let newUser = (user) => {
+export let newUser = (user) => ({
   type: NEW_USER,
   user
-};
+});
 
-export let receiveFailure = (video) => {
+export let receiveFailure = (video) => ({
   type: FETCH_VIDEO_FAILURE,
   user
-};
+});
 
-export let receiveVideo = (video) => {
+export let receiveVideo = (video) => ({
   type: FETCH_VIDEO_SUCCESS,
   video
-};
+});
 
-export let getVideo = (video) => {
+export let getVideo = (video) => ({
   type: FETCH_VIDEO_INPUTS,
   video
-};
+});
 
-export let invalidateVideoList = (list) => {
+export let invalidateVideoList = (list) => ({
   type: INVALIDATE_VIDEO,
   list
-};
+});
 
 export let fetchVideo = (video) =>
-  (dispatch) => {
+  dispatch => {
     dispatch(getVideo(video));
 
     return getUserMedia()
