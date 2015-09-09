@@ -3,20 +3,7 @@ export default () => {
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-  let sourceSelected = (audioSource, videoSource) => {
-    let constraints = {
-      audio: false,
-      video: {
-        mandatory: {
-          chromeMediaSource: 'screen',
-          maxWidth: screen.availWidth,
-          maxHeight: screen.availHeight,
-          maxFrameRate: 25
-        },
-        optional: [{sourceId: videoSource}]
-      }
-    };
-
+  let sourceSelected = (constraints) => {
     return new Promise((resolve, reject) => {
       navigator.getUserMedia(constraints, stream => {
         resolve(stream);
@@ -29,16 +16,33 @@ export default () => {
       var audioSource = null;
       var videoSource = null;
 
+      let constraints = {
+        audio: false,
+        video: {
+          mandatory: {
+            minWidth: 1280,
+            minHeight: 720,
+            maxWidth: screen.availWidth,
+            maxHeight: screen.availHeight,
+            maxFrameRate: 25
+          },
+        }
+      };
+
+      let screenConstraints = Object.assign({}, constraints, {
+        video: {
+          mandatory: {chromeMediaSource: 'screen'}
+        }
+      });
+
+      videos.push(sourceSelected(screenConstraints));
       sourceInfos.forEach(info => {
         if (info.kind === 'audio') {
-          audioSource = info.id;
+          return;
         }
 
-        if (info.kind === 'video') {
-          videoSource = info.id;
-        }
-
-        videos.push(sourceSelected(audioSource, videoSource));
+        let videoConstraints = Object.assign({}, constraints, {optional: [{sourceId: info.id}]});
+        videos.push(sourceSelected(videoConstraints));
       });
 
       Promise.all(videos)
