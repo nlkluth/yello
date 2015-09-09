@@ -6,9 +6,11 @@ import BroadcastView from './broadcastView.jsx';
 
 export default class BroadcastBox extends React.Component {
   render() {
+    let {dispatch, broadcasters} = this.props;
+
     return (
       <div className="broadcastbox container-vertical">
-        <BroadcastView broadcasters={this.props.broadcasters} />
+        <BroadcastView dispatch={dispatch} broadcasters={broadcasters} />
         <BroadcastControls />
       </div>
     )

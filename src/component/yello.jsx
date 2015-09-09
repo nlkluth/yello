@@ -1,4 +1,5 @@
 'use strict';
+
 import {connect} from 'react-redux';
 import React from 'react';
 import {RouteHandler} from 'react-router';
