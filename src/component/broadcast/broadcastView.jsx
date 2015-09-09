@@ -6,14 +6,19 @@ import Loading from '../common/loading.jsx';
 import { broadcasters } from '../../actions'
 
 export default class BroadcastView extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(broadcasters.fetchVideo());
+  }
+
   render() {
+    let list = this.props.broadcasters;
     let videoList;
 
-    videoList = this.props.broadcasters.broadcasters.map(stream =>
+    videoList = list.broadcasters.map(stream =>
       <VideoList key={stream.id} stream={stream} />
     );
 
-    if (this.props.broadcasters.fetching) {
+    if (list.fetching) {
       videoList = <Loading />
     }
 

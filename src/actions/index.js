@@ -1,5 +1,7 @@
 'use strict';
 
-export { default as chat } from './chat';
-export { default as viewers } from './viewers';
-export { default as broadcasters } from './broadcasters';
+import * as chat from './chat';
+import * as viewers from './viewers';
+import * as broadcasters from './broadcasters';
+
+export { chat, viewers, broadcasters };

@@ -9,18 +9,15 @@ import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
 import store from '../stores';
 
-let routes = (
-  <Route name="Home" handler={YelloApp} path="/">
-    <Route name="Viewers" handler={ViewerBox} />
-    <Route name="Chat" handler={ChatBox} />
-    <DefaultRoute handler={BroadcastBox} />
-  </Route>
-);
-
-Router.run(routes, (Handler, routerState) =>
-  React.render(
+React.render(
   <Provider store={store}>
-    {() => <Handler routerSate={routerState} />}
+    {() =>
+      <Router>
+        <Route name="Home" component={YelloApp} path="/" />
+        <Route name="Viewers" component={ViewerBox} />
+        <Route name="Chat" component={ChatBox} />
+      </Router>
+    }
   </Provider>,
   document.getElementById('content')
-));
+);
