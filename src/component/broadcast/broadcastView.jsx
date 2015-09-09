@@ -24,7 +24,9 @@ export default class BroadcastView extends React.Component {
 
     return (
       <div className="broadcastView container-nowrap">
-        {videoList}
+        <div className="videolist">
+          {videoList}
+        </div>
       </div>
     )
   }

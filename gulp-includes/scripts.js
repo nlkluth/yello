@@ -21,7 +21,6 @@ module.exports = function(gulp) {
 
     function rebundle() {
       return bundler.bundle()
-        // log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./lib/js'));
