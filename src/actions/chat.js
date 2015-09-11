@@ -2,12 +2,16 @@
 
 import { NEW_MESSAGE, NEW_USER } from './constants';
 
-export let newMessage = (message) => ({
-  type: NEW_MESSAGE,
-  message
-});
+export function newMessage(message) {
+  return {
+    type: NEW_MESSAGE,
+    message
+  }
+}
 
-export let newUser = (user) => ({
-  type: NEW_USER,
-  user
-});
+export function newUser(user) {
+  return {
+    type: NEW_USER,
+    user
+  }
+}

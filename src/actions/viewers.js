@@ -2,7 +2,7 @@
 
 import { NEW_USER } from './constants';
 
-export let newUser = (user) => ({
+export function newUser(user) {
   type: NEW_USER,
   user
-});
+}

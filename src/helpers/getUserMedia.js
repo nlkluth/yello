@@ -3,13 +3,12 @@ export default () => {
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-  let sourceSelected = (constraints) => {
-    return new Promise((resolve, reject) => {
+  let sourceSelected = constraints =>
+    new Promise((resolve, reject) => {
       navigator.getUserMedia(constraints, stream => {
         resolve(stream);
       }, e => reject(e));
     });
-  };
 
   return new Promise((resolve, reject) => {
     MediaStreamTrack.getSources(sourceInfos => {

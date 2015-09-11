@@ -6,36 +6,47 @@ import {
   FETCH_VIDEO_SUCCESS, INVALIDATE_VIDEO
 } from './constants';
 
-export let newUser = (user) => ({
-  type: NEW_USER,
-  user
-});
+export function newUser(user) {
+  return {
+    type: NEW_USER,
+    user
+  }
+}
 
-export let receiveFailure = (video) => ({
-  type: FETCH_VIDEO_FAILURE,
-  user
-});
+export function receiveFailure(video) {
+  return {
+    type: FETCH_VIDEO_FAILURE,
+    user
+  }
+}
 
-export let receiveVideo = (video) => ({
-  type: FETCH_VIDEO_SUCCESS,
-  video
-});
+export function receiveVideo(video) {
+  return {
+    type: FETCH_VIDEO_SUCCESS,
+    video
+  }
+}
 
-export let getVideo = (video) => ({
-  type: FETCH_VIDEO_INPUTS,
-  video
-});
+export function getVideo(video) {
+  return {
+    type: FETCH_VIDEO_INPUTS,
+    video
+  }
+}
 
-export let invalidateVideoList = (list) => ({
-  type: INVALIDATE_VIDEO,
-  list
-});
+export function invalidateVideoList(list) {
+  return {
+    type: INVALIDATE_VIDEO,
+    list
+  }
+}
 
-export let fetchVideo = (video) =>
-  dispatch => {
+export function fetchVideo(video) {
+  return dispatch => {
     dispatch(getVideo(video));
 
     return getUserMedia()
       .then(response => dispatch(receiveVideo(response)))
       .catch(error => dispatch(receiveFailure(error)));
   };
+}
