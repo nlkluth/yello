@@ -6,10 +6,12 @@ import ChatForm from './chatForm.jsx';
 
 export default class ChatBox extends React.Component {
   render() {
+    let {dispatch, chat} = this.props;
+
     return (
       <div className="chatbox container-vertical">
-        <ChatList chat={this.props.chat} />
-        <ChatForm />
+        <ChatList chat={chat} />
+        <ChatForm dispatch={dispatch} />
       </div>
     )
   }

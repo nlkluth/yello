@@ -1,15 +1,16 @@
 'use strict';
 
 import { NEW_MESSAGE, NEW_USER } from '../actions/constants';
-const intialState = [{id: 1, user: 'jen', text: 'foo'}, {id: 2, user: 'brian', text: 'bar bar'}];
+const intialState = {messages: []};
 
 export default (state = intialState, action) => {
   switch(action.type) {
     case NEW_MESSAGE:
       return Object.assign({}, state, {
         messages: [...state.messages, {
-          text: action.text,
-          user: action.user
+          id: state.messages.length + 1,
+          text: action.message.text,
+          user: action.message.user
         }]
       });
     case NEW_USER:

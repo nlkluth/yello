@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { chat } from '../../actions'
 
 export default class ChatForm extends React.Component {
   constructor(props) {
@@ -10,10 +11,13 @@ export default class ChatForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let text = React.findDOMNode(this.refs.text).value.trim();
+    if (text === '') {
+      return;
+    }
 
-    var text = React.findDOMNode(this.refs.text);
-    this.props.dispatch();
-    text.value = '';
+    this.props.dispatch(chat.newMessage({user: 'test', text}));
+    React.findDOMNode(this.refs.text).value = ''
   }
 
   render() {

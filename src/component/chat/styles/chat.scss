@@ -1,6 +1,15 @@
 .chatbox {
   flex-grow: 1;
   padding: 10px;
+
+  .author {
+    margin-right: 3px;
+    display: inline-block;
+
+    &:after {
+      content: ":";
+    }
+  }
 }
 
 .chatlist {
