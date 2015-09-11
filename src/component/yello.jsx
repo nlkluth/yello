@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import React from 'react';
 import {RouteHandler} from 'react-router';
 import NavBox from './common/navBox.jsx';
+import { broadcasters } from '../actions'
 
 @connect(state => {
   return {
@@ -13,6 +14,11 @@ import NavBox from './common/navBox.jsx';
   }
 })
 export default class YelloApp extends React.Component {
+  constructor(props) {
+    super(props);
+    props.dispatch(broadcasters.fetchVideo({user: null}));
+  }
+
   render() {
     return (
       <div className="container-vertical-nowrap">
