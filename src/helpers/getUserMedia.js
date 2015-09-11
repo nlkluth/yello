@@ -12,9 +12,6 @@ export default () => {
 
   return new Promise((resolve, reject) => {
     MediaStreamTrack.getSources(sourceInfos => {
-      var audioSource = null;
-      var videoSource = null;
-
       let constraints = {
         audio: false,
         video: {
