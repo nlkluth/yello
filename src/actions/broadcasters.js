@@ -10,35 +10,35 @@ export function newUser(user) {
   return {
     type: NEW_USER,
     user
-  }
+  };
 }
 
 export function receiveFailure(video) {
   return {
     type: FETCH_VIDEO_FAILURE,
     user
-  }
+  };
 }
 
 export function receiveVideo(video) {
   return {
     type: FETCH_VIDEO_SUCCESS,
     video
-  }
+  };
 }
 
 export function getVideo(video) {
   return {
     type: FETCH_VIDEO_INPUTS,
     video
-  }
+  };
 }
 
 export function invalidateVideoList(list) {
   return {
     type: INVALIDATE_VIDEO,
     list
-  }
+  };
 }
 
 export function fetchVideo(video) {
