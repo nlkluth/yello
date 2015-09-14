@@ -16,6 +16,6 @@ export default class VideoList extends React.Component {
 
   componentDidMount() {
     let video = React.findDOMNode(this);
-    video.onloadedmetadata = () => video.play();
+    video.onloadedmetadata = video.play;
   }
 }

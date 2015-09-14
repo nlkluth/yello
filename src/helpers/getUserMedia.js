@@ -5,9 +5,7 @@ export default () => {
 
   let sourceSelected = constraints =>
     new Promise((resolve, reject) => {
-      navigator.getUserMedia(constraints, stream => {
-        resolve(stream);
-      }, e => reject(e));
+      navigator.getUserMedia(constraints, resolve, reject);
     });
 
   return new Promise((resolve, reject) => {
@@ -42,8 +40,8 @@ export default () => {
       });
 
       Promise.all(videos)
-        .then(result => resolve(result))
-        .catch(error => reject(error));
+        .then(resolve)
+        .catch(reject);
     });
   });
 };
