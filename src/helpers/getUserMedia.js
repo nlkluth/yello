@@ -36,7 +36,9 @@ export default () => {
       videos.push(sourceSelected(screenConstraints));
       sourceInfos.forEach(info => {
         if (info.kind === 'audio') {
-          speech(sourceSelected(Object.assign({}, constraints, {audo: true})));
+          speech(sourceSelected(Object.assign({}, constraints, {
+            audio: {optional: [{sourceId: info.id}]}
+          })));
         }
 
         let videoConstraints = Object.assign({}, constraints, {optional: [{sourceId: info.id}]});
