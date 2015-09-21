@@ -16,7 +16,7 @@ export function newUser(user) {
 export function receiveFailure(video) {
   return {
     type: FETCH_VIDEO_FAILURE,
-    user
+    video
   };
 }
 
