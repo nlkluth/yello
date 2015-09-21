@@ -5,12 +5,15 @@ import React from 'react';
 export default class VideoList extends React.Component {
   constructor(props) {
     super(props);
-    this.src = window.URL.createObjectURL(props.stream);
+    this.src = window.URL.createObjectURL(props.stream.source);
   }
 
   render() {
+    let {stream} = this.props;
+    let talking = stream.talking ? 'broadcast talking' : 'broadcast';
+
     return (
-      <video src={this.src}></video>
+      <video className={talking} src={this.src}></video>
     )
   }
 

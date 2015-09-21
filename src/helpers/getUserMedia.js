@@ -1,3 +1,7 @@
+'use strict';
+
+import speech from './speech';
+
 export default () => {
   let videos = [];
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -32,7 +36,7 @@ export default () => {
       videos.push(sourceSelected(screenConstraints));
       sourceInfos.forEach(info => {
         if (info.kind === 'audio') {
-          return;
+          speech(sourceSelected(Object.assign({}, constraints, {audo: true})));
         }
 
         let videoConstraints = Object.assign({}, constraints, {optional: [{sourceId: info.id}]});
