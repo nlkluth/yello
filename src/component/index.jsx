@@ -8,6 +8,7 @@ import ChatBox from './chat/chatBox.jsx';
 import ViewerBox from './viewers/viewerBox.jsx';
 import BroadcastBox from './broadcast/broadcastBox.jsx';
 import store from '../stores';
+require('babel-core/polyfill');
 
 let routes = (
   <Route name="Home" handler={YelloApp} path="/">

@@ -40,17 +40,15 @@ export default (state = intialState, action) => {
       });
       break;
     case START_TALK:
-      broadcasterList = Object.assign({}, state.broadcasters);
-      broadcaster = broadcasterList.findIndex(() => Object.is(action.user));
-      broadcaster.talking = true;
+      broadcaster = state.broadcasters.findIndex(user => Object.is(user, action.user));
+      Object.assign({}, broadcaster, {talking: true});
 
       result = Object.assign({}, state, {
         broadcasterList
       });
     case END_TALK:
-      broadcasterList = Object.assign({}, state.broadcasters);
-      broadcaster = broadcasterList.findIndex(() => Object.is(action.user));
-      broadcaster.talking = false;
+      broadcaster = state.broadcasters.findIndex(user => Object.is(user, action.user));
+      Object.assign({}, broadcaster, {talking: false});
 
       result = Object.assign({}, state, {
         broadcasterList
