@@ -6,7 +6,6 @@ import { talk } from '../actions';
 
 export default (stream) => {
   stream.then((result) => {
-    console.log('result: ', result);
     let speechEvents = hark(result, {});
 
     speechEvents.on('speaking', () =>

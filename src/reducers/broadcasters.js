@@ -13,7 +13,7 @@ const intialState = {
 };
 
 export default (state = intialState, action) => {
-  let result, broadcasterList, broadcaster;
+  let result, broadcasterList, index;
 
   switch(action.type) {
     case NEW_USER:
@@ -26,7 +26,12 @@ export default (state = intialState, action) => {
       });
       break;
     case FETCH_VIDEO_SUCCESS:
-      action.video = action.video.map(x => ({ talking: false, source: x}));
+      action.video = action.video.map((x, index) => ({
+        talking: false,
+        source: x,
+        user: 'test',
+        id: index
+      }));
 
       result = Object.assign({}, state, {
         fetching: false,
@@ -40,19 +45,23 @@ export default (state = intialState, action) => {
       });
       break;
     case START_TALK:
-      broadcaster = state.broadcasters.findIndex(user => Object.is(user, action.user));
-      Object.assign({}, broadcaster, {talking: true});
+      broadcasterList = state.broadcasters;
+      index = broadcasterList.findIndex(user => user.user === action.user.user);
+      broadcasterList[index].talking = true;
 
       result = Object.assign({}, state, {
-        broadcasterList
+        broadcasters: broadcasterList
       });
+      break;
     case END_TALK:
-      broadcaster = state.broadcasters.findIndex(user => Object.is(user, action.user));
-      Object.assign({}, broadcaster, {talking: false});
+      broadcasterList = state.broadcasters;
+      index = broadcasterList.findIndex(user => user.user === action.user.user);
+      broadcasterList[index].talking = false;
 
       result = Object.assign({}, state, {
-        broadcasterList
+        broadcasters: broadcasterList
       });
+      break;
     default:
       result = state;
   }
